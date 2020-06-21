@@ -11,7 +11,7 @@ const forecast = (latitude,longitude,callback) =>{
             callback('Unable to find location',undefined);
         }
         else{
-            let prediction = `${body.current.weather_descriptions[0]}. It is currently ${body.current.temperature} degrees out. It feels like ${body.current.feelslike} degrees`;
+            let prediction = `${body.current.weather_descriptions[0]}. It is currently ${body.current.temperature} degrees out. It feels like ${body.current.feelslike} degrees. Humidy is around 56%`;
             callback(undefined,prediction);
         }  
     });
