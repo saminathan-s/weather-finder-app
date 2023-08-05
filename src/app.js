@@ -1,6 +1,6 @@
 const path = require('path');
 const express = require('express');
-const hbs = require('hbs');
+const hbs = require('express-handlebars');
 const geocode = require('./utils/geocode');
 const forecast = require('./utils/forecast');
 
@@ -14,9 +14,18 @@ app.use(express.static(publicPath));
 
 app.set('view engine', 'hbs');
 app.set('views', viewsPath);
-hbs.registerPartials(partialsPath);
+// hbs.registerPartials(partialsPath);
 
-app.get('/', (req, res) => {
+app.engine(
+  'hbs',
+  hbs.engine({
+    extname: 'hbs',
+    defaultLayout: 'index',
+    partialsDir: partialsPath,
+  })
+);
+
+app.get('/weather', (req, res) => {
   res.render('index', {
     title: 'Weather App',
     name: 'Sami',
