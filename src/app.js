@@ -25,7 +25,7 @@ app.engine(
   })
 );
 
-app.get('/weather', (req, res) => {
+app.get('/home', (req, res) => {
   res.render('index', {
     title: 'Weather App',
     name: 'Sami',
